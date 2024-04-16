@@ -4,8 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-    hellow world
+    <script>
+        $(document).ready(function(){
+            UrlExists('//http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA', function(status){
+                if(status === 200){
+                   // file was found
+                    location.href = "http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
+                }
+                else if(status === 404){
+                   // 404 not found
+                    location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
+                }
+            });
+            function UrlExists(url, cb){
+                jQuery.ajax({
+                    url:      url,
+                    dataType: 'text',
+                    type:     'GET',
+                    complete:  function(xhr){
+                        if(typeof cb === 'function')
+                           cb.apply(this, [xhr.status]);
+                    }
+                });
+            }
+        })
+        
+    </script>
 </body>
 </html>
