@@ -8,16 +8,16 @@
 </head>
 <body>
 <script>
+    function isValidHttpUrl(string) {
+      try {
+        const newUrl = new URL(string);
+        return newUrl.protocol === 'http:' || newUrl.protocol === 'https:';
+      } catch (err) {
+        return false;
+      }
+    }
 
-    var request;
-    if(window.XMLHttpRequest)
-        request = new XMLHttpRequest();
-    else
-        request = new ActiveXObject("Microsoft.XMLHTTP");
-    request.open('GET', 'http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA', false);
-    request.send(); // there will be a 'pause' here until the response to come.
-    // the object request will be actually modified
-    if (request.status === 404) {
+    if (isValidHttpUrl("http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA")) {
         window.location.href = "http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
     }else{
         window.location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
