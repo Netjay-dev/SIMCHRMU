@@ -9,23 +9,22 @@
 </head>
 <body>
 <script>
-    $(document).ready(function(){
-        $.ajax({
-            type:"POST",
-            url:"http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA/", //be sure to check the right attribute
-            success: function () { //pass an anonymous callback function
-                //window.location.href = "http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
+
+        const https = require('https')
+        https.get('http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA/', res => {
+            if(res.statusCode === 200) {
+                console.log('Service online.')
+                service1URL= "http://serviceURL1.uk/";
+            } else {
+                console.log('Service offline. Redirecting to backup URL.')
+                service1URL= "http://serviceURLbackup.uk/";
             }
-            headers: {
-                'Access-Control-Allow-Credentials':true
-            },
-            error: function (jqXHR, status, er) {
-                console.log(jqXHR.status);
-                //window.location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
-            }
+        }).on('error', (e) => {
+          console.log('Service offline. Redirecting to backup URL.')
+                service1URL= "http://serviceURLbackup.uk/";
         });
-    
-    })
+
+        //window.location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
         
 </script>
 </body>
