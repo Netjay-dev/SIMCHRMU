@@ -5,17 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <script>
-        $(document).ready(function(){
+<script>
 
-            window.location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
-
-            
-        })
+    var request;
+    if(window.XMLHttpRequest)
+        request = new XMLHttpRequest();
+    else
+        request = new ActiveXObject("Microsoft.XMLHTTP");
+    request.open('GET', 'http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA', false);
+    request.send(); // there will be a 'pause' here until the response to come.
+    // the object request will be actually modified
+    if (request.status === 404) {
+        window.location.href = "http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
+    }else{
+        window.location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
+    }
+    
         
-    </script>
+</script>
 </body>
 </html>
