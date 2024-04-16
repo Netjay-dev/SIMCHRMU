@@ -5,24 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
 <script>
-    function isValidHttpUrl(string) {
-      try {
-        const newUrl = new URL(string);
-        return newUrl.protocol === 'http:' || newUrl.protocol === 'https:';
-      } catch (err) {
-        return false;
-      }
-    }
-
-    if (isValidHttpUrl("http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA")) {
-        window.location.href = "http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
-    }else{
-        window.location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
-    }
+    $(document).ready(function(){
+        $.ajax({
+            url:"http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA", //be sure to check the right attribute
+            success: function () { //pass an anonymous callback function
+                window.location.href = "http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
+            },
+            error: function (jqXHR, status, er) {
+                window.location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
+            }
+        });
     
+    })
         
 </script>
 </body>
