@@ -14,10 +14,11 @@
             type:"GET",
             url:"http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA", //be sure to check the right attribute
             success: function () { //pass an anonymous callback function
-                window.location.href = "http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
+                //window.location.href = "http://192.168.3.100:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
             },
             error: function (jqXHR, status, er) {
-                window.location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
+                console.log(jqXHR.status);
+                //window.location.href = "http://161.49.228.248:5555/csat_system/forms/survey/rgP8V4y1aKReQGw5WvzA";
             }
         });
     
